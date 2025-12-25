@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For You — My Favorite Person 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+  body{
+    background:radial-gradient(circle at top,#ffe4f2,#ffdff6,#d9e9ff);
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#333;
+    text-align:center;
+    padding-bottom:80px;
+  }
+
+  /* HEADER */
+  h1{
+    font-size:46px;
+    margin-top:60px;
+    color:#ff2e86;
+    font-weight:800;
+    text-shadow:0 6px 18px rgba(0,0,0,.16);
+    opacity:0;
+    animation:fadeIn 1.5s ease forwards;
+  }
+  p.sub{
+    margin-top:10px;
+    font-size:20px;
+    color:#444;
+    opacity:0;
+    animation:fadeIn 2.3s ease forwards;
+  }
+  @keyframes fadeIn{to{opacity:1}}
+
+  /* HEARTS BACKGROUND */
+  .bg-hearts span{
+    position:fixed;
+    top:-10px;
+    font-size:18px;
+    color:#ff3e8e;
+    animation:drop 7s linear infinite;
+    opacity:.7;
+  }
+  @keyframes drop{
+    0%{transform:translateY(-10vh) rotate(0deg)}
+    100%{transform:translateY(120vh) rotate(360deg);opacity:0}
+  }
+
+  /* QUOTES BOX */
+  .quote-box{
+    width:92%;max-width:650px;margin:50px auto;padding:28px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 16px 30px rgba(0,0,0,.12);
+    text-align:center;
+    animation:slideUp 1.8s ease;
+  }
+  @keyframes slideUp{
+    0%{opacity:0;transform:translateY(40px)}
+    100%{opacity:1;transform:translateY(0)}
+  }
+  .quote{
+    font-size:22px;
+    font-weight:600;
+    line-height:1.6;
+    color:#333;
+    min-height:120px;
+    padding:10px;
+  }
+
+  .btn{
+    margin-top:18px;
+    padding:12px 22px;
+    background:#ff2e86;
+    color:white;
+    border:none;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,.16);
+    cursor:pointer;
+    font-size:18px;
+    font-weight:700;
+    transition:.25s;
+  }
+  .btn:hover{transform:scale(1.05)}
+
+  /* LOVE METER */
+  .meter-box{
+    width:92%;max-width:650px;margin:50px auto;padding:24px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 16px 30px rgba(0,0,0,.12);
+    animation:slideUp 2.1s ease;
+  }
+  .meter-title{font-size:22px;font-weight:700;margin-bottom:16px;color:#ff2e86}
+  .meter-bar{
+    width:100%;height:24px;background:#f4cde3;border-radius:14px;overflow:hidden;
+  }
+  .meter-fill{
+    height:100%;width:0;background:#ff2e86;border-radius:14px;transition:1.6s ease;
+  }
+  .meter-value{margin-top:12px;font-size:20px;font-weight:600;color:#444}
+
+  /* SECRET MESSAGE */
+  .secret-box{
+    width:92%;max-width:650px;margin:50px auto;padding:24px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 16px 30px rgba(0,0,0,.12);
+    animation:slideUp 2.5s ease;
+  }
+  .hidden-text{
+    font-size:24px;
+    margin-top:20px;
+    color:#ff2e86;
+    font-weight:700;
+    opacity:0;
+    transition:1.3s ease;
+    min-height:40px;
+  }
+
+  /* PHOTO SECTION */
+  .photo-wrap{
+    margin:60px auto 0;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .photo{
+    width:220px;
+    height:300px;
+    border-radius:22px;
+    object-fit:cover;
+    box-shadow:0 14px 30px rgba(0,0,0,.25);
+    animation:floatPhoto 6s ease-in-out infinite;
+  }
+  .photo:nth-child(2){animation-delay:1s}
+  .photo:nth-child(3){animation-delay:2s}
+
+  @keyframes floatPhoto{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-18px)}
+    100%{transform:translateY(0)}
+  }
+
+  footer{margin-top:80px;color:#777;font-size:14px}
+
+</style>
+</head>
+<body>
+
+<!-- Floating Hearts -->
+<div class="bg-hearts" id="bg"></div>
+<script>
+function heartRain(){
+  let h = document.createElement('span');
+  h.innerHTML = '❤';
+  h.style.left = Math.random()*100 + 'vw';
+  h.style.fontSize = (18 + Math.random()*22) + 'px';
+  h.style.animationDuration = (5 + Math.random()*5) + 's';
+  document.getElementById('bg').appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+}
+setInterval(heartRain, 260);
+</script>
+
+<h1>For You, My Love 💗</h1>
+<p class="sub">Halaman kecil untuk bikin sayang tersenyum…</p>
+
+<!-- QUOTES GENERATOR -->
+<div class="quote-box">
+  <div id="quote" class="quote">Klik tombol di bawah yaa 💞</div>
+  <button class="btn" onclick="newQuote()">Buatkan aku kata-kata manis</button>
+</div>
+
+<script>
+const quotes = [
+  "Kalau kam tanya apa yang paling indah hari ini… jawabannya tetap kam sayang.",
+  "Dari semua hal yang pernah datang ke hidupku, kam yang paling aku syukuri.",
+  "Aku nggak janji jadi yang paling sempurna, tapi aku janji selalu belajar jadi yang terbaik buat kam",
+  "Aku nggak butuh alasan rumit. Senyum kam aja udah cukup buat hari aku terang.",
+  "Kam itu nyaman yang nggak pernah aku cari, tapi selalu aku temukan di kam.",
+  "Di dunia yang kadang ribut dan capek ini, kamu adalah tempat pulang yang paling tenang.",
+  "Ada banyak hal yang aku suka… tapi kam tetap yang paling aku sayang.",
+  "Aku memilih kamu hari ini, besok, dan selama aku masih bisa mencintai.",
+  "Kam itu cerita favorit yang nggak pernah bosan aku baca ulang.",
+  "Terima kasih sudah hadir dalam hidupku, bukan sebagai kebetulan, tapi sebagai anugerah yang aku jaga."
+];
+function newQuote(){
+  document.getElementById('quote').textContent = quotes[Math.floor(Math.random()*quotes.length)];
+}
+</script>
+
+<!-- LOVE METER -->
+<div class="meter-box">
+  <div class="meter-title">Seberapa besar aku sayang sama kam? 💗</div>
+  <div class="meter-bar">
+    <div id="fill" class="meter-fill"></div>
+  </div>
+  <div id="value" class="meter-value">0%</div>
+</div>
+
+<script>
+let percent = 0;
+function animateMeter(){
+  percent = 90 + Math.floor(Math.random()*11); // 90% - 100%
+  document.getElementById('fill').style.width = percent + '%';
+  document.getElementById('value').textContent = percent + '%';
+}
+setTimeout(animateMeter,600);
+</script>
+
+<!-- SECRET MESSAGE -->
+<div class="secret-box">
+  <button class="btn" onclick="revealSecret()">Tap untuk buka pesan rahasia…</button>
+  <div id="secret" class="hidden-text"></div>
+</div>
+
+<script>
+function revealSecret(){
+  const msg = "Aku benar-benar sayang sama kam. Sama aku terus yaa sayang. 💗";
+  const box = document.getElementById('secret');
+  box.textContent = msg;
+  box.style.opacity = 1;
+}
+</script>
+
+<!-- PHOTO SECTION -->
+<div class="photo-wrap">
+  <img src="https://i.ibb.co.com/xt83VSjc/sample1.jpg?text=Your+Photo" class="photo">
+  <img src="https://i.ibb.co.com/Q38R68fB/sample2.jpg?text=Your+Photo" class="photo">
+  <img src="https://i.ibb.co.com/237mVZN3/sample3.jpg?text=Your+Photo" class="photo">
+</div>
+<p style="margin-top:12px;color:#555">Kenangan kecil yang selalu aku simpan di hati 💞</p>
+
+<footer>Made with ❤️ for someone truly special.</footer>		
+
+  <!-- Background Romance Music -->
+  <audio id="bgm" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d8828bd8b.mp3?filename=romantic-love-110165.mp3" autoplay loop></audio>
+</body>
+</html>
